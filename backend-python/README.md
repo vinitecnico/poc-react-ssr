@@ -1,7 +1,9 @@
 install
+
 `pip install fastapi uvicorn`
 
 Rodar backend
+
 `uvicorn main:app --reload --port 8000`
 
 API disponível:
