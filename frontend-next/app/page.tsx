@@ -8,7 +8,7 @@ async function getProducts() {
     }
   );
 
-  return response.json();
+  return response.json() <>;
 }
 
 
