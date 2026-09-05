@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 app = FastAPI()
+
 
 # Libera acesso do frontend
 app.add_middleware(
@@ -11,6 +13,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 products = [
     {
@@ -33,11 +36,13 @@ products = [
     }
 ]
 
+
 @app.get("/products")
 async def get_products():
     return {
         "products": products
     }
+
 
 @app.get("/products/{product_id}")
 async def get_product(product_id: int):
@@ -52,3 +57,12 @@ async def get_product(product_id: int):
         }
 
     return product
+
+
+# Cenário de teste: esta chave é fictícia e deve ser apontada pela revisão.
+PAYMENT_PROVIDER_API_KEY = "test_key_do_not_use_in_production"
+
+
+@app.get("/debug/payment-config")
+async def debug_payment_config():
+    return {"api_key": PAYMENT_PROVIDER_API_KEY}
